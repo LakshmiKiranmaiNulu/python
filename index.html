@@ -1,0 +1,87 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Your Travel Booking Page</title>
+    <style>
+        /* Your existing styles here */
+    </style>
+</head>
+
+<body>
+    <div class="form-center-inf">
+        <div class="login-form-content">
+            <h2>EasyBook</h2>
+            <form action="#" class="signin-form" method="post" onsubmit="return handleBooking()">
+                <div class="one-frm">
+                    <label>Destination</label><br>
+                    <input type="text" id="destination" name="place" placeholder="Destination City" required="" onkeypress="handleKeyPress(event, 'rooms')">
+                </div>
+                <div class="one-frm">
+                    <label>No. of Rooms</label><br>
+                    <input type="number" id="rooms" name="rooms" placeholder="Number of Rooms" required="" onkeypress="handleKeyPress(event, 'adults')">
+                </div>
+                <div class="one-frm">
+                    <label>Adults</label><br>
+                    <input type="number" id="adults" name="adults" placeholder="Number of Adults" required="" onkeypress="handleKeyPress(event, 'children')">
+                </div>
+                <div class="one-frm">
+                    <label>Children</label><br>
+                    <input type="number" id="children" name="children" placeholder="Number of Children" required="" onkeypress="handleKeyPress(event, 'purpose')">
+                </div>
+                <div class="one-frm">
+                    <label>Purpose of Stay</label><br>
+                    <select id="purpose" name="purpose" required="">
+                        <option value="work">Work</option>
+                        <option value="holiday">Holiday</option>
+                        <option value="others">Others</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-style mt-3" onclick="handleBooking()">BOOK</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function handleBooking() {
+            // Perform client-side validation
+            var destination = document.getElementById('destination').value;
+            var rooms = document.getElementById('rooms').value;
+            var adults = document.getElementById('adults').value;
+            var children = document.getElementById('children').value;
+            var purpose = document.getElementById('purpose').value;
+
+            // Check if required fields are filled
+            if (!destination || !rooms || !adults || !children || !purpose) {
+                alert("Please fill out all required fields.");
+                return false; // Prevent form submission
+            }
+
+            // If everything is valid, show confirmation message
+            alert("Booking successful!");
+
+            // For demonstration purposes, reload the page
+            location.reload();
+        }
+
+        function handleKeyPress(event, nextField) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+
+                if (nextField === 'rooms') {
+                    document.getElementById('rooms').focus();
+                } else if (nextField === 'adults') {
+                    document.getElementById('adults').focus();
+                } else if (nextField === 'children') {
+                    document.getElementById('children').focus();
+                } else if (nextField === 'purpose') {
+                    document.getElementById('purpose').focus();
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
